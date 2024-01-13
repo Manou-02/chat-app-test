@@ -1,0 +1,30 @@
+.home_page {
+  &__header {
+    @apply w-full h-[25vh];
+  }
+
+  &__header_image {
+    @apply w-full h-full object-contain;
+  }
+
+  &__title {
+    @apply text-primary text-center text-4xl font-bold;
+  }
+
+  &__content {
+    @apply flex justify-center flex-col md:flex-row items-center w-full gap-[30px] mt-[80px] h-[50vh] p-[40px];
+  }
+
+  &__card_content {
+    @apply h-[250px] w-[400px] text-primary hover:text-brown cursor-pointer rounded-[8px] p-[10px] flex flex-col justify-center items-center;
+    box-shadow: 0 0 12px #cccccc, -0 -0 12px #ffffff;
+  }
+
+  &__card_content_title {
+    @apply text-xl font-bold;
+  }
+
+  &__card_content_icon {
+    @apply h-[60px] w-[60px];
+  }
+}

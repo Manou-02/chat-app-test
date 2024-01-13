@@ -10,6 +10,7 @@ import Csv from "@shared/assets/images/png/csv.png";
 
 import LoginChat from "@shared/assets/images/png/chat_login.png";
 import Chat from "@shared/assets/images/png/chat.png";
+import Conversations from "@shared/assets/images/png/Conversation.png";
 
 export const IMAGES = {
   LOGIN_SCREEN: LoginImage,
@@ -22,4 +23,5 @@ export const IMAGES = {
   CSV_IMAGE: Csv,
   LOGIN_CHAT: LoginChat,
   CHAT: Chat,
+  CONVERSATIONS: Conversations,
 };

@@ -15,6 +15,7 @@ export default {
         accent: "#F4F5F7",
         black: "#A39F9F",
         grayBlack: "#797575",
+        brown: "#83032C",
       },
       space: {},
     },

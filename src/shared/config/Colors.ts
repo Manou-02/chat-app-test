@@ -5,4 +5,5 @@ export class Color {
   static ACCENT = "#F4F5F7";
   static BLACK = "#A39F9F";
   static GRAY_BLACK = "#797575";
+  static BROWN = "#83032C";
 }

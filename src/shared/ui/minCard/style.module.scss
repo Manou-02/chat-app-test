@@ -1,0 +1,5 @@
+.card {
+  &__container {
+    @apply bg-white  rounded-[8px] overflow-hidden p-[10px];
+  }
+}
