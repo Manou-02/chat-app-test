@@ -1,4 +1,6 @@
 import { Tabs } from "@/widgets/components/tabs/Tabs";
+import { DiscussionsGroup } from "@/widgets/discussionGroup/DiscussionsGroup";
+import { Discussions } from "@/widgets/discussions/Discussions";
 import { useState } from "react";
 
 type ItemsType = {
@@ -12,12 +14,12 @@ export const DiscussionSideBar = () => {
     {
       key: "0",
       label: "Discussions",
-      children: <p>Simple discussion </p>,
+      children: <Discussions />,
     },
     {
       key: "1",
       label: "Groupes",
-      children: <p>Groupes de discussion </p>,
+      children: <DiscussionsGroup />,
     },
   ]);
 

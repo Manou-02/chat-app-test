@@ -1,0 +1,32 @@
+.card_group {
+  &__container {
+    @apply flex gap-[20px] cursor-pointer hover:bg-slate-50 p-[10px] rounded-[8px];
+  }
+
+  &__content {
+  }
+
+  &__images_container {
+    @apply w-full h-full flex justify-center items-center;
+  }
+
+  &__avatar {
+    @apply w-[35px] h-[35px];
+  }
+
+  &__images {
+    @apply w-[80px] h-[80px] object-contain;
+  }
+
+  &__active {
+    @apply bg-slate-50;
+  }
+
+  &__name {
+    @apply text-lg font-bold;
+  }
+
+  &__subtitle {
+    @apply text-xs text-secondary;
+  }
+}
