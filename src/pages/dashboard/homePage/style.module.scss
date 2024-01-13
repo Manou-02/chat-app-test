@@ -8,7 +8,7 @@
   }
 
   &__title {
-    @apply text-primary text-center text-4xl font-bold;
+    @apply text-secondary text-center text-4xl font-bold;
   }
 
   &__content {
@@ -16,7 +16,7 @@
   }
 
   &__card_content {
-    @apply h-[250px] w-[400px] text-primary hover:text-brown cursor-pointer rounded-[8px] p-[10px] flex flex-col justify-center items-center;
+    @apply h-[250px] w-[400px] text-secondary hover:text-brown cursor-pointer rounded-[8px] p-[10px] flex flex-col justify-center items-center;
     box-shadow: 0 0 12px #cccccc, -0 -0 12px #ffffff;
   }
 
