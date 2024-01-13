@@ -1,0 +1,5 @@
+.range {
+  &__container {
+    @apply flex flex-col gap-[5px];
+  }
+}

@@ -1,0 +1,6 @@
+.cardItem {
+  &__container {
+    @apply min-w-[100px] min-h-[50px] p-[20px]  rounded-[8px] border-secondary;
+    box-shadow: 0 0 8px #cccccc, -0 -0 8px #ffffff;
+  }
+}

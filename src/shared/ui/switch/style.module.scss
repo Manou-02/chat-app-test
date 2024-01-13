@@ -1,0 +1,5 @@
+.switch {
+  &__content {
+    @apply flex flex-col gap-[5px];
+  }
+}

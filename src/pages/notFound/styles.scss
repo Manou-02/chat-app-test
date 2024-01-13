@@ -1,0 +1,17 @@
+.not-found {
+  &__container {
+    @apply flex justify-center items-center h-[100vh] w-[100vw];
+  }
+
+  &__content {
+    @apply w-[800px] h-[600px];
+  }
+
+  &__items {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  &__text {
+    @apply text-primary font-semibold text-lg;
+  }
+}

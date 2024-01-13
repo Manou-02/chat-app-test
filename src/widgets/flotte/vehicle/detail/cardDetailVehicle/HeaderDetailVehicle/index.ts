@@ -1,0 +1,1 @@
+export { HeaderDetailVehicle } from "./HeaderDetailVehicle"

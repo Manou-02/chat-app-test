@@ -1,0 +1,1 @@
+export { AssuranceDetailVehicle } from "./AssuranceDetailVehicle"

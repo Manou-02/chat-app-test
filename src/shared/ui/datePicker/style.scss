@@ -1,0 +1,13 @@
+.date_picker {
+  &__container {
+    @apply flex flex-col gap-[3px] w-full;
+
+    .ant-space-item {
+      @apply w-full;
+    }
+  }
+
+  &__label {
+    @apply text-secondary font-semibold;
+  }
+}

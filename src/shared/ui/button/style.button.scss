@@ -1,0 +1,43 @@
+.button {
+  &__primary {
+    @apply outline-none bg-primary p-[10px] flex justify-center items-center text-white cursor-pointer rounded-[8px] min-w-[200px];
+  }
+  &__primary-rounded {
+    @apply outline-none bg-primary p-[10px] flex justify-center items-center text-white cursor-pointer rounded-[50px] min-w-[200px];
+  }
+
+  &__secondary {
+    @apply outline-none bg-white p-[10px] flex justify-center items-center text-primary cursor-pointer rounded-[8px] border border-primary min-w-[200px];
+  }
+
+  &__secondary-rounded {
+    @apply outline-none bg-white p-[10px] flex justify-center items-center text-primary cursor-pointer rounded-[50px] border border-primary min-w-[200px];
+  }
+
+  &__dark {
+    @apply outline-none bg-secondary p-[10px] flex justify-center items-center text-white cursor-pointer rounded-[8px] border border-secondary min-w-[200px];
+  }
+  &__dark-rounded {
+    @apply outline-none bg-secondary p-[10px] flex justify-center items-center text-white cursor-pointer rounded-[50px] border border-secondary min-w-[200px];
+  }
+
+  &__dark-transparent {
+    @apply outline-none bg-white p-[10px] flex justify-center items-center text-secondary cursor-pointer rounded-[8px] border border-secondary min-w-[200px];
+  }
+
+  &__dark-transparent-rounded {
+    @apply outline-none bg-white p-[10px] flex justify-center items-center text-secondary cursor-pointer rounded-[50px] border border-secondary min-w-[200px];
+  }
+
+  &__rounded-sm {
+    @apply rounded-[8px];
+  }
+
+  &__rounded {
+    @apply rounded-[12px];
+  }
+
+  &__size-sm {
+    @apply h-[40px];
+  }
+}

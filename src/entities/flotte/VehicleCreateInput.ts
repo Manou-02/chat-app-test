@@ -1,0 +1,22 @@
+export type VehicleCreateInput = {
+    id?: number,
+    registrationNumber: string,
+    state: number,
+    averageConsumption: number,
+    firstCirculationAt: string,
+    chassisNumber: string,
+    hasTag: boolean,
+    hasBuzzer: boolean,
+    power: number,
+    unloadedWeight: number,
+    reservoirCapacity: number,
+    reservoirOilCapacity: number,
+    payload: number,
+    utility: number,
+    typeOfEngine: number,
+    mileage: number,
+    gender: string,
+    vehicleBrand: string | null,
+    vehicleModel: string | null,
+    type: number
+}

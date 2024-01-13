@@ -1,0 +1,45 @@
+.login {
+  &__container {
+    @apply w-full h-[100vh] flex justify-center items-center;
+  }
+
+  &__content {
+    @apply w-[600px]  h-[600px] border-[3px] rounded-[8px] border-primary;
+    box-shadow: 0 0 26px #cccccc, -0 -0 26px #ffffff;
+  }
+
+  &__content-card {
+    @apply flex overflow-hidden h-full;
+  }
+
+  &__content-card-item {
+    @apply flex-1 w-full flex justify-center items-center;
+  }
+  &__content-card-image {
+    @apply hidden md:flex;
+  }
+
+  &__illustration-images {
+    @apply rounded-tl-[8px] rounded-bl-[8px] h-[100%] w-full overflow-hidden;
+  }
+
+  &__form {
+    @apply w-full h-full p-[80px] flex flex-col justify-center;
+  }
+
+  &__form-header {
+    @apply w-full h-[150px] flex-col flex justify-center items-center;
+  }
+
+  &__form-logo {
+    @apply h-full;
+  }
+
+  &__form-footer {
+    @apply w-full flex justify-between items-center;
+  }
+
+  &__form-forget-password {
+    @apply w-full flex justify-end my-[20px];
+  }
+}

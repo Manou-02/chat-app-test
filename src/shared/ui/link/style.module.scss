@@ -1,0 +1,5 @@
+.link {
+  &__content {
+    @apply text-primary cursor-pointer outline-none;
+  }
+}

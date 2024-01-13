@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+button[role="switch"][aria-checked="false"] {
+  background-color: gray;
+}
+
+button[role="switch"] {
+  max-width: 60px;
+}

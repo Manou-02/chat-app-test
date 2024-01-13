@@ -1,0 +1,12 @@
+.upload {
+  &__content {
+    @apply w-full border border-slate-300 p-[10px] rounded-[8px] flex justify-end items-center;
+  }
+
+  &__container {
+    @apply flex flex-col;
+    .ant-upload-wrapper .ant-upload {
+      @apply w-full;
+    }
+  }
+}

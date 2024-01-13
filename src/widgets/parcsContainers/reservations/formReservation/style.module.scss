@@ -1,0 +1,10 @@
+.input {
+    &__container {
+      @apply flex flex-col gap-[30px];
+    }
+  
+    &__label {
+      @apply text-secondary font-semibold;
+    }
+  }
+  

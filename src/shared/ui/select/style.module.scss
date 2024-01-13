@@ -1,0 +1,9 @@
+.select {
+  &__label {
+    @apply text-secondary font-semibold;
+  }
+
+  &__required {
+    @apply text-red-500;
+  }
+}
