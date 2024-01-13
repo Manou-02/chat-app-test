@@ -4,14 +4,22 @@ import styles from "./style.module.scss";
 import { GrGroup } from "react-icons/gr";
 
 type PropsType = {
+  id: string;
   name: string;
   subtitle?: string;
   image?: string;
+  onClick: (id: string) => void;
 };
 
-export const CardGroup: FC<PropsType> = ({ name, image, subtitle }) => {
+export const CardGroup: FC<PropsType> = ({
+  id,
+  name,
+  image,
+  subtitle,
+  onClick,
+}) => {
   return (
-    <div className={styles.card_group__container}>
+    <div className={styles.card_group__container} onClick={() => onClick(id)}>
       {image ? (
         <Avatar src={image} />
       ) : (
