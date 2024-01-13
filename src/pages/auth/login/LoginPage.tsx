@@ -126,9 +126,9 @@ export const LoginPage = () => {
                     <Link path="/">Mot de passe oublié ?</Link>
                   </div>
                   <div className="login__form-footer">
-                    {/* <Link path="/">S'inscrire ?</Link> */}
+                    <Link path="/">S'inscrire ?</Link>
                     <p></p>
-                    <Button isTypeSubmit isFullWidth onClick={handleSubmitForm}>
+                    <Button isTypeSubmit onClick={handleSubmitForm}>
                       {isLoading ? <Spinner /> : "Se connecter"}
                     </Button>
                   </div>
