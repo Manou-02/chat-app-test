@@ -2,7 +2,6 @@ import { IMAGES } from "@/shared/config/Images";
 import styles from "./style.module.scss";
 import { MinCard } from "@/shared/ui/minCard/MinCard";
 import { MdOutlineAddComment } from "react-icons/md";
-import { BiSolidMessageAdd } from "react-icons/bi";
 import { AiOutlineUsergroupAdd } from "react-icons/ai";
 
 export const HomePage = () => {
