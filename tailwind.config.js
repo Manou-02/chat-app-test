@@ -4,12 +4,12 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Helvetica", "Arial", "sans-serif"],
-   },
+    },
     extend: {
       colors: {
         // Configure your color palette here
         white: "#ffffff",
-        primary: "#ED202E",
+        primary: "#DA054A",
         secondary: "#677788",
         gray: "#D2C8C8",
         accent: "#F4F5F7",

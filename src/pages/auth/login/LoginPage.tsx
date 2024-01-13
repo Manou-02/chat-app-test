@@ -89,18 +89,18 @@ export const LoginPage = () => {
       <div className="login__content">
         <Card>
           <div className="login__content-card">
-            {/* <div className="login__content-card-item login__content-card-image">
+            <div className="login__content-card-item login__content-card-image">
               <img
-                src={IMAGES.LOGIN_SCREEN}
+                src={IMAGES.LOGIN_CHAT}
                 className="login__illustration-images"
               />
-            </div> */}
+            </div>
             <div className="login__content-card-item ">
               <div className="login__form">
                 {error ? <Alert message={error} type="error" /> : ""}
                 <div className="login__form-header">
                   <img
-                    src={IMAGES.LOGO_IMAGE}
+                    src={IMAGES.CHAT}
                     alt="login__logo"
                     className="login__form-logo"
                   />
