@@ -11,4 +11,8 @@
   &__images {
     @apply w-[100px] h-[100px];
   }
+
+  &__content {
+    @apply p-[10px];
+  }
 }
