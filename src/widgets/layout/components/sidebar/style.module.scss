@@ -3,4 +3,12 @@
     @apply z-50 w-[400px];
     box-shadow: 11px 11px 22px #e8e8e8, -11px -11px 22px #ffffff;
   }
+
+  &__title_icon {
+    @apply w-full  bg-white  pb-[10px] flex justify-center mt-[60px];
+  }
+
+  &__images {
+    @apply w-[100px] h-[100px];
+  }
 }

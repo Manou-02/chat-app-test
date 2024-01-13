@@ -86,12 +86,12 @@ export const Sidebar: FC = () => {
           key: "setting/user",
           // icon: <CiUser style={iconSize} />,
         },
-         {
-           label: "Centres",
-           key: "setting/centers",
-           // icon: <RiMapPinLine style={iconSize} />,
-         },
-         {
+        {
+          label: "Centres",
+          key: "setting/centers",
+          // icon: <RiMapPinLine style={iconSize} />,
+        },
+        {
           label: "Départements",
           key: "setting/department",
           // icon: <FaChalkboardUser style={iconSize} />,
@@ -164,14 +164,18 @@ export const Sidebar: FC = () => {
           label: "Type de containers",
           key: "setting/type-container",
           // icon: <BsBoxFill style={iconSize} />,
-         },
+        },
       ],
     },
   ];
   return (
     <div className={styles.sidebar__container}>
-      <div className="bg-white w-full pb-[10px]">
-        <img src={IMAGES.LOGO_IMAGE} alt="Logo images" />
+      <div className={styles.sidebar__title_icon}>
+        <img
+          src={IMAGES.CHAT}
+          alt="Logo images"
+          className={styles.sidebar__images}
+        />
       </div>
       <MenuBuilder menuList={menuList} isActive />
     </div>
