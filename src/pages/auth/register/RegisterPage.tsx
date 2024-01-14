@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 // import { Color } from "@/shared/config/Colors";
-import "./style.login.scss";
+import "./style.register.scss";
 import { Card } from "@/shared/ui/card/Card";
 import { IMAGES } from "@/shared/config/Images";
 import { Form } from "antd";
@@ -24,7 +24,7 @@ import { Title } from "@/shared/ui/title/Title";
 import { store } from "@/app/appStore";
 // import { useStore } from "react-redux";
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -57,26 +57,26 @@ export const LoginPage = () => {
   const handleSubmitForm = async () => {
     console.log(initialState);
 
-    setError("");
-    try {
-      setIsloading(true);
-      const res = await AuthServices.login(initialState);
-      if (res.status !== HttpStatus.OK) {
-        setError(res?.data?.status?.message);
-      } else {
-        dispatch(setUserProfileData(res?.data));
-        const users = await UsersServices.getProfileUsers();
-        if (users.status === HttpStatus.OK) {
-          navigate("/");
-        } else {
-          setError(users?.data?.status?.message);
-        }
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsloading(false);
-    }
+    // setError("");
+    // try {
+    //   setIsloading(true);
+    //   const res = await AuthServices.login(initialState);
+    //   if (res.status !== HttpStatus.OK) {
+    //     setError(res?.data?.status?.message);
+    //   } else {
+    //     dispatch(setUserProfileData(res?.data));
+    //     const users = await UsersServices.getProfileUsers();
+    //     if (users.status === HttpStatus.OK) {
+    //       navigate("/");
+    //     } else {
+    //       setError(users?.data?.status?.message);
+    //     }
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // } finally {
+    //   setIsloading(false);
+    // }
   };
 
   const handleChange = (e: any) => {
@@ -104,15 +104,23 @@ export const LoginPage = () => {
                     alt="login__logo"
                     className="login__form-logo"
                   />
-                  <Title>Se connecter</Title>
+                  <Title>S'inscrire</Title>
                 </div>
                 <Form className="" form={form} onFinish={handleSubmitForm}>
                   <TextInput
+                    label="Nom d'utilisateur"
+                    required
+                    name="name"
+                    // errorMessage="zaza"
+                    value={initialState["name"]}
+                    onChange={handleChange}
+                  />
+                  <TextInput
                     label="Email"
                     required
-                    name="username"
+                    name="email"
                     // errorMessage="zaza"
-                    value={initialState["username"]}
+                    value={initialState["email"]}
                     onChange={handleChange}
                   />
                   <PasswordInput
@@ -122,21 +130,21 @@ export const LoginPage = () => {
                     value={initialState["password"]}
                     onChange={handleChange}
                   />
-                  <div className="login__form-forget-password">
+                  {/* <div className="login__form-forget-password">
                     <Link path="/">Mot de passe oublié ?</Link>
-                  </div>
+                  </div> */}
                   <div className="login__form-footer">
                     <a
-                      onClick={() => navigate("/register")}
+                      onClick={() => navigate("/login")}
                       className="text-primary cursor-pointer outline-none"
                     >
                       {" "}
-                      S'inscrire ?{" "}
+                      Se connecter ?{" "}
                     </a>
                     {/* <Link path="/register">S'inscrire ?</Link> */}
                     <p></p>
                     <Button isTypeSubmit onClick={handleSubmitForm}>
-                      {isLoading ? <Spinner /> : "Se connecter"}
+                      {isLoading ? <Spinner /> : "S'inscrire"}
                     </Button>
                   </div>
                 </Form>

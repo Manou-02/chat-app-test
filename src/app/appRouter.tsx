@@ -3,6 +3,7 @@ import { LoginPage } from "@/pages/auth/login/LoginPage";
 import { ProtectedRoutes } from "./ProtectedRoutes";
 import { Logout } from "@/pages/auth/logout/Logout";
 import { TestComponent } from "@/pages/test-component";
+import { RegisterPage } from "@/pages/auth/register/RegisterPage";
 
 const privateRoutes: RouteObject[] = [
   {
@@ -61,6 +62,10 @@ const privateRoutes: RouteObject[] = [
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/register",
+    element: <RegisterPage />,
   },
   {
     path: "/logout",
