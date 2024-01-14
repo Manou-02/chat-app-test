@@ -8,13 +8,13 @@ import { RootState } from "@/app/appStore";
 import { DiscussionsServices } from "@/features/discussions/services/DiscussionService";
 import { Loader } from "@/shared/ui/loader/Loader";
 
-type DataType = {
-  _id: string;
-  name: string;
-  email?: string;
-  image?: string;
-  isActive?: boolean;
-};
+// type DataType = {
+//   _id: string;
+//   name: string;
+//   email?: string;
+//   image?: string;
+//   isActive?: boolean;
+// };
 
 export const Discussions = () => {
   const navigate = useNavigate();
@@ -85,11 +85,11 @@ export const Discussions = () => {
             <CardUser
               id={item?._id}
               name={
-                item?.members?.find((member: any) => member?._id !== user?.id)
+                item?.members?.find((member: any) => member?._id !== user?._id)
                   ?.name
               }
               subtitle={
-                item?.members?.find((member: any) => member?._id !== user?.id)
+                item?.members?.find((member: any) => member?._id !== user?._id)
                   ?.email
               }
               image={item?.image}

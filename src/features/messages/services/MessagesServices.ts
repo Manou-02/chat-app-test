@@ -9,4 +9,12 @@ export class MessagesServices {
       return error;
     }
   };
+
+  static sendMessages = async (data: any) => {
+    try {
+      return await Http.post(`${MessageConstants.MESSAGE}`, data);
+    } catch (error) {
+      return error;
+    }
+  };
 }

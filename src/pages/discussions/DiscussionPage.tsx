@@ -11,6 +11,7 @@ import { MessagesServices } from "@/features/messages/services/MessagesServices"
 import { HttpStatus } from "@/shared/config/Status";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/appStore";
+import Spinner from "@/shared/ui/spinner/Spinner";
 
 export const DiscussionPage = () => {
   const { id } = useParams();
@@ -20,6 +21,7 @@ export const DiscussionPage = () => {
   const [message, setMessage] = useState<string>("");
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [allConversations, setAllConversations] = useState<any[]>([]);
+  const [isLoadingMessage, setIsloadingMessage] = useState<boolean>(false);
 
   useEffect(() => {
     const objDiv = window.document.getElementById("message_container");
@@ -29,14 +31,15 @@ export const DiscussionPage = () => {
     id && getMessagesConversations(id);
   }, [id]);
 
-  const getMessagesConversations = async (id: string) => {
+  const getMessagesConversations = async (id: string, isLoad = true) => {
     try {
-      setIsloading(true);
+      setIsloading(isLoad ? true : false);
       const { status, data } = await MessagesServices.getMessagesDiscussions(
         id
       );
       if (status === HttpStatus.OK) {
         setAllConversations(data?.data);
+        console.log(data?.data);
       }
     } catch (error) {
       console.log(error);
@@ -49,9 +52,24 @@ export const DiscussionPage = () => {
     setMessage((Object.values(e) as any)[0]);
   };
 
-  const handleSendMessage = (e: any) => {
+  const handleSendMessage = async (e: any) => {
     e.preventDefault();
-    console.log(">>>>>\n", message);
+    const dataToSend = {
+      chatId: id,
+      senderId: user?._id,
+      text: message,
+    };
+    try {
+      setIsloadingMessage(true);
+      const { status } = await MessagesServices.sendMessages(dataToSend);
+      if (status === HttpStatus.OK) {
+        setMessage("");
+        id && getMessagesConversations(id, false);
+      }
+    } catch (error) {
+    } finally {
+      setIsloadingMessage(false);
+    }
   };
 
   return (
@@ -69,301 +87,34 @@ export const DiscussionPage = () => {
           </div>
         </div>
         <div className={styles.discussion__content} id="message_container">
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
-          <MessageContainer type="sender">
-            {" "}
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
-            mollitia illo ad sint, facilis cum praesentium odio cupiditate non
-            exercitationem? Illum molestias architecto dolores optio odit,
-            commodi animi vel aut.
-          </MessageContainer>
-          <MessageContainer type="receiver"> Bonjour</MessageContainer>
+          {allConversations?.map((item: any, key: number) => (
+            <MessageContainer
+              type={user?._id === item?.senderId?._id ? "sender" : "receiver"}
+              key={key}
+            >
+              {" "}
+              {item?.text}
+            </MessageContainer>
+          ))}
         </div>
         <form
           className={styles.discussion__footer}
           onSubmit={handleSendMessage}
         >
           <MessageInput
+            value={message}
             name="message"
             placeholder="Ecrivez ici..."
             onChange={handleChange}
           />
-          <IoIosSend
-            className={styles.discussion__send_icon}
-            onClick={handleSendMessage}
-          />
+          {isLoadingMessage ? (
+            <Spinner />
+          ) : (
+            <IoIosSend
+              className={styles.discussion__send_icon}
+              onClick={handleSendMessage}
+            />
+          )}
         </form>
       </div>
     </>

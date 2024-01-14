@@ -63,7 +63,7 @@ const loadingStyles = {
     display: "none",
   },
   loadingText: (isShowCounter?: boolean) => ({
-    backgroundColor: "#131628",
+    backgroundColor: "#DA054A",
     padding: "7px 20px",
     borderRadius: 7,
     boxShadow: "0 0 7px #131628",
