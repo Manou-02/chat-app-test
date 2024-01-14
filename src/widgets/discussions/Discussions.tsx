@@ -2,7 +2,7 @@ import { Search } from "@/shared/ui/search/Search";
 import { useEffect, useState } from "react";
 import { CardUser } from "./components/cardUser/CardUser";
 import { Divider } from "@/shared/ui/divider/Divider";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@/app/appStore";
 import { DiscussionsServices } from "@/features/discussions/services/DiscussionService";
@@ -44,7 +44,6 @@ export const Discussions = () => {
   // ]);
 
   useEffect(() => {
-    console.log(">>>>>>\n", user);
     getChatDiscussions(user._id);
   }, [user]);
 
@@ -65,7 +64,6 @@ export const Discussions = () => {
 
   const handleSubmitSearch = (e: any) => {
     e.preventDefault();
-
     console.log(searchText);
   };
 
