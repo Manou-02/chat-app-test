@@ -2,12 +2,18 @@ import { FaUserCog } from "react-icons/fa";
 import { MenuBuilder } from "../menuBuilder/MenuBuilder";
 import { FaUserCircle } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
+import { FaBell } from "react-icons/fa";
 
 export const Navbar = () => {
   const menuList = [
     {
       label: "",
       key: "",
+    },
+    {
+      label: "",
+      key: "notifications",
+      icon: <FaBell style={{ fontSize: 30 }} />,
     },
     {
       label: "",

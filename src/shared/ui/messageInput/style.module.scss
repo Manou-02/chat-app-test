@@ -1,0 +1,9 @@
+.message_input {
+  &__container {
+    @apply border border-slate-200 rounded-[50px] p-[10px] w-full;
+  }
+
+  &__input {
+    @apply border-none outline-none w-full h-full px-[10px];
+  }
+}

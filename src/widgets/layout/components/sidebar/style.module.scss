@@ -9,7 +9,7 @@
   }
 
   &__images {
-    @apply w-[100px] h-[100px];
+    @apply w-[100px] h-[100px] cursor-pointer;
   }
 
   &__content {

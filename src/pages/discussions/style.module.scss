@@ -1,0 +1,15 @@
+.discussion {
+  &__container {
+  }
+
+  &__content {
+  }
+
+  &__footer {
+    @apply flex gap-[20px];
+  }
+
+  &__send_icon {
+    @apply h-[25px] w-[25px] cursor-pointer hover:text-primary;
+  }
+}

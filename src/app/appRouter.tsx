@@ -26,6 +26,26 @@ const privateRoutes: RouteObject[] = [
           return { Component: HomePage };
         },
       },
+
+      {
+        path: "discussion/:id",
+        lazy: async () => {
+          let { DiscussionPage } = await import(
+            "@/pages/discussions/DiscussionPage"
+          );
+          return { Component: DiscussionPage };
+        },
+      },
+
+      {
+        path: "discussion-group/:id",
+        lazy: async () => {
+          let { DiscussionGroupPage } = await import(
+            "@/pages/discussionGroup/DiscussionGroupPage"
+          );
+          return { Component: DiscussionGroupPage };
+        },
+      },
       // {
       //   path: "style-guides",
       //   index: true,

@@ -2,6 +2,7 @@ import { Search } from "@/shared/ui/search/Search";
 import { useState } from "react";
 import { CardGroup } from "../discussions/components/cardGroup/CardGroup";
 import { Divider } from "@/shared/ui/divider/Divider";
+import { useNavigate } from "react-router-dom";
 
 type DataType = {
   id: string;
@@ -11,6 +12,8 @@ type DataType = {
 };
 
 export const DiscussionsGroup = () => {
+  const navigate = useNavigate();
+
   const [searchText, setSearchText] = useState<string>("");
   const [fake] = useState<Array<DataType>>([
     {
@@ -36,7 +39,7 @@ export const DiscussionsGroup = () => {
   };
 
   const handleClickGroup = (id: string) => {
-    console.log(id);
+    navigate(`discussion-group/${id}`);
   };
   return (
     <div>
