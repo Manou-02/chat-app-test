@@ -1,8 +1,10 @@
 .discussion {
   &__container {
+    @apply flex flex-col h-[90vh];
   }
 
   &__content {
+    @apply flex-1;
   }
 
   &__footer {
