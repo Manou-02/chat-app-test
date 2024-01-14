@@ -1,0 +1,29 @@
+.discussion_group {
+  &__container {
+    @apply flex flex-col h-[90vh] gap-[20px];
+  }
+
+  &__content {
+    @apply flex-1 overflow-y-auto flex flex-col gap-[20px];
+  }
+
+  &__footer {
+    @apply flex gap-[20px];
+  }
+
+  &__send_icon {
+    @apply h-[40px] w-[40px] cursor-pointer hover:text-primary;
+  }
+
+  &__header {
+    @apply flex gap-[20px];
+  }
+
+  &__header_title {
+    @apply font-bold text-xl;
+  }
+
+  &__header_subtitle {
+    @apply font-thin text-xs;
+  }
+}
