@@ -65,12 +65,14 @@ export const LoginPage = () => {
         setError(res?.data?.status?.message);
       } else {
         dispatch(setUserProfileData(res?.data));
-        const users = await UsersServices.getProfileUsers();
-        if (users.status === HttpStatus.OK) {
-          navigate("/");
-        } else {
-          setError(users?.data?.status?.message);
-        }
+        navigate("/");
+
+        // const users = await UsersServices.getProfileUsers();
+        // if (users.status === HttpStatus.OK) {
+        //   navigate("/");
+        // } else {
+        //   setError(users?.data?.status?.message);
+        // }
       }
     } catch (error) {
       console.log(error);
@@ -110,9 +112,9 @@ export const LoginPage = () => {
                   <TextInput
                     label="Email"
                     required
-                    name="username"
+                    name="email"
                     // errorMessage="zaza"
-                    value={initialState["username"]}
+                    value={initialState["email"]}
                     onChange={handleChange}
                   />
                   <PasswordInput
@@ -123,7 +125,7 @@ export const LoginPage = () => {
                     onChange={handleChange}
                   />
                   <div className="login__form-forget-password">
-                    <Link path="/">Mot de passe oublié ?</Link>
+                    {/* <Link path="/">Mot de passe oublié ?</Link> */}
                   </div>
                   <div className="login__form-footer">
                     <a

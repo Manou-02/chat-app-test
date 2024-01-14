@@ -7,12 +7,10 @@ import { Form } from "antd";
 import { TextInput } from "@/shared/ui/textInput/TextInput";
 import { PasswordInput } from "@/shared/ui/passwordInput/PasswordInput";
 import { Button } from "@/shared/ui/button/Button";
-import Link from "@/shared/ui/link/Link";
 import { AuthServices } from "@/features/auth/services/Auth.services";
 import { useState } from "react";
 import Spinner from "@/shared/ui/spinner/Spinner";
 import { HttpStatus } from "@/shared/config/Status";
-import { UsersServices } from "@/features/users/services/Users.services";
 import { Alert } from "@/shared/ui/alert/Alert";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -22,6 +20,7 @@ import {
 } from "@/features/auth/reducers/Auth.reducers";
 import { Title } from "@/shared/ui/title/Title";
 import { store } from "@/app/appStore";
+import { UsersServices } from "@/features/users/services/Users.services";
 // import { useStore } from "react-redux";
 
 export const RegisterPage = () => {
@@ -57,26 +56,31 @@ export const RegisterPage = () => {
   const handleSubmitForm = async () => {
     console.log(initialState);
 
-    // setError("");
-    // try {
-    //   setIsloading(true);
-    //   const res = await AuthServices.login(initialState);
-    //   if (res.status !== HttpStatus.OK) {
-    //     setError(res?.data?.status?.message);
-    //   } else {
-    //     dispatch(setUserProfileData(res?.data));
-    //     const users = await UsersServices.getProfileUsers();
-    //     if (users.status === HttpStatus.OK) {
-    //       navigate("/");
-    //     } else {
-    //       setError(users?.data?.status?.message);
-    //     }
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // } finally {
-    //   setIsloading(false);
-    // }
+    setError("");
+    try {
+      setIsloading(true);
+      const res = await AuthServices.register(initialState);
+
+      if (res.status !== HttpStatus.OK) {
+        setError(res?.data?.status?.message);
+      } else {
+        console.log(res.data);
+
+        dispatch(setUserProfileData(res?.data));
+        navigate("/");
+
+        //     const users = await UsersServices.getProfileUsers();
+        //   if (users.status === HttpStatus.OK) {
+        //     navigate("/");
+        //   } else {
+        //     setError(users?.data?.status?.message);
+        //   }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsloading(false);
+    }
   };
 
   const handleChange = (e: any) => {
