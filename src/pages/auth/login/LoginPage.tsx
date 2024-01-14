@@ -7,12 +7,10 @@ import { Form } from "antd";
 import { TextInput } from "@/shared/ui/textInput/TextInput";
 import { PasswordInput } from "@/shared/ui/passwordInput/PasswordInput";
 import { Button } from "@/shared/ui/button/Button";
-import Link from "@/shared/ui/link/Link";
 import { AuthServices } from "@/features/auth/services/Auth.services";
 import { useState } from "react";
 import Spinner from "@/shared/ui/spinner/Spinner";
 import { HttpStatus } from "@/shared/config/Status";
-import { UsersServices } from "@/features/users/services/Users.services";
 import { Alert } from "@/shared/ui/alert/Alert";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -22,13 +20,11 @@ import {
 } from "@/features/auth/reducers/Auth.reducers";
 import { Title } from "@/shared/ui/title/Title";
 import { store } from "@/app/appStore";
-// import { useStore } from "react-redux";
 
 export const LoginPage = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const store = useStore();
 
   const [isLoading, setIsloading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,9 +45,6 @@ export const LoginPage = () => {
     if ((res as any).status === HttpStatus.OK) {
       console.log("Response_n", res);
     }
-    // else {
-    //   navigate(-1);
-    // }
   };
 
   const handleSubmitForm = async () => {
@@ -66,13 +59,6 @@ export const LoginPage = () => {
       } else {
         dispatch(setUserProfileData(res?.data));
         navigate("/");
-
-        // const users = await UsersServices.getProfileUsers();
-        // if (users.status === HttpStatus.OK) {
-        //   navigate("/");
-        // } else {
-        //   setError(users?.data?.status?.message);
-        // }
       }
     } catch (error) {
       console.log(error);
@@ -83,7 +69,6 @@ export const LoginPage = () => {
 
   const handleChange = (e: any) => {
     setInitialState((prev: any) => ({ ...prev, ...e }));
-    // form.setFieldsValue({ [Object.keys(e)[0]]: Object.values(e)[0] });
   };
 
   return (
@@ -113,7 +98,6 @@ export const LoginPage = () => {
                     label="Email"
                     required
                     name="email"
-                    // errorMessage="zaza"
                     value={initialState["email"]}
                     onChange={handleChange}
                   />
@@ -135,7 +119,6 @@ export const LoginPage = () => {
                       {" "}
                       S'inscrire ?{" "}
                     </a>
-                    {/* <Link path="/register">S'inscrire ?</Link> */}
                     <p></p>
                     <Button isTypeSubmit onClick={handleSubmitForm}>
                       {isLoading ? <Spinner /> : "Se connecter"}
