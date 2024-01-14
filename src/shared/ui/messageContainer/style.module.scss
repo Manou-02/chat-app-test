@@ -1,0 +1,20 @@
+.message_container {
+  &__cont {
+    @apply flex items-center;
+  }
+
+  &__container_receiver {
+    @apply flex justify-start px-[20px];
+  }
+  &__content_receiver {
+    @apply bg-primary p-[10px] rounded-t-[12px] rounded-br-[12px] w-max md:max-w-lg lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl  text-white;
+  }
+
+  &__container_sender {
+    @apply w-full flex justify-end px-[20px];
+  }
+
+  &__content_sender {
+    @apply bg-secondary p-[10px] rounded-t-[12px] rounded-bl-[12px] w-max md:max-w-md lg:max-w-lg xl:max-w-xl 2xl:max-w-2xl text-white;
+  }
+}

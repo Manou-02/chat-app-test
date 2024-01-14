@@ -1,4 +1,3 @@
-import { CustomBreadcrumb } from "@/shared/components/breadcrumb/CustomBreadcrumb";
 import { Color } from "@/shared/config/Colors";
 import MainLayout from "@/widgets/components/mainLayout/MainLayout";
 import { Navbar } from "@/widgets/layout/components/navbar/Navbar";
@@ -35,7 +34,7 @@ export const BaseLayout = (
       <div className="w-full">
         <Navbar />
         <MainLayout>
-          <CustomBreadcrumb />
+          {/* <CustomBreadcrumb /> */}
           <Outlet />
         </MainLayout>
       </div>
